@@ -69,7 +69,7 @@ public class Main {
         drinkMenu.add(water);
         drinkMenu.add(soda);
         drinkMenu.add(milk);
-        //PP3-Step3-Constructor Call: of 'Order'
+        //PP3-Step5-Constructor Call: of 'Order'
         new Order(cupcakeMenu, drinkMenu);
 
 

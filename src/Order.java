@@ -53,9 +53,9 @@ public class Order {
                 int orderChoice = userInput.nextInt();
                 //Call userInput.nextLine() to correct the terminal scanner input location.
                 userInput.nextLine();
-                //'If' & 'Else If' Statements that checks whether the user's 'orderChoice' ie equal to either 1,2,3,4,5,6 (choice selections from the cupcakeMenu ArrayList).
+                //'If' & 'Else If' Statements that checks whether the user's 'orderChoice' ie equal to either 1,2,3,4,5,6 (choice selections from both the cupcakeMenu & drinkMenu ArrayList).
                         //----The following line explains the purpose of the code that's within the curly braces of the 'If' & 'Else If' Statements
-                //If the user's input (orderChoice) equals/ matches the number, add the corresponding item (index position) from the 'cupcakeMenu' ArrayList to the order 'ArrayList'. And then print Item added to order'.
+                //If the user's input (orderChoice) equals/ matches the number, add the corresponding item (index position) from the 'cupcakeMenu' & 'drinkMenu' ArrayList to the order 'ArrayList'. And then print Item added to order'.
                 if(orderChoice == 1){
                     order.add(cupcakeMenu.get(0));
                     System.out.println("Item added to order. ");
@@ -72,17 +72,17 @@ public class Order {
                 }
                 //An 'Else If' statement that checks if 'orderChoice' equals 4
                 else if(orderChoice == 4){
-                    order.add(cupcakeMenu.get(3));
+                    order.add(drinkMenu.get(0));
                     System.out.println("Item added to order. ");
                 }
                 //An 'Else If' statement that checks if 'orderChoice' equals 5
                 else if (orderChoice == 5) {
-                    order.add(cupcakeMenu.get(4));
+                    order.add(drinkMenu.get(1));
                     System.out.println("Item added to order. ");
                 }
                 //An 'Else If' statement that checks if 'orderChoice' equals 6
                 else if(orderChoice == 6){
-                    order.add(cupcakeMenu.get(5));
+                    order.add(drinkMenu.get(2));
                     System.out.println("Item added to order. ");
                 }
                 else
@@ -97,6 +97,73 @@ public class Order {
                 if(!placeOrder.equalsIgnoreCase("Y")){
                     ordering = false;
                 }
+            };
+            //Print the first item of the 'order' ArrayList
+            System.out.println(order.get(0));
+
+            //Print the second item of the 'order' ArrayList
+            System.out.println(order.get(1));
+
+            //Create a double variable called "subtotal" set equal to '0.0'
+            double subtotal = 0.0;
+            //Check if 'order' at i (aka 'order.get(i)' is equal to cupcakeMenu at 0 (aka 'cupcakeMenu.get(0))
+            for(int i = 2; i < order.size(); i++){
+                if(order.get(i).equals(cupcakeMenu.get(0))){
+                    //Get the value of cupcakeMenu @ index 0 and then run the type method on the said Cupcake Object
+                    cupcakeMenu.get(0).type();
+                    //Print the price of this specific cupcake,by using the 'getPrice()' method
+                    System.out.println(cupcakeMenu.get(0).getPrice());
+                    //Reassign the 'subtotal' equal to the sum of 'subtotal' & the price of the cupcake (at it's given index)
+                    subtotal = subtotal + cupcakeMenu.get(0).getPrice(); //Or //subtotal += cupcakeMenu.get(0).getPrice();
+                }
+                //Check if 'order' at i (aka 'order.get(i)' is equal to cupcakeMenu at 1 (aka 'cupcakeMenu.get(1))
+                else if(order.get(i).equals(cupcakeMenu.get(1))){
+                    //Get the type of  cupcake at cupcakeMenu @ index 1, and then run the type method on the said Cupcake Object
+                    cupcakeMenu.get(1).type();
+                    //Print the price of this specific cupcake,by using the 'getPrice()' method
+                    System.out.println(cupcakeMenu.get(1).getPrice());
+                    //Set the 'subtotal' equal to 'subtotal' plus the 'cupcakeMenu' 'getPrice()' at 1
+                    subtotal = subtotal + cupcakeMenu.get(1).getPrice();
+                }
+                //Check if 'order' at i is equal to 'cupcakeMenu' at 2
+                else if(order.get(i).equals(cupcakeMenu.get(2))){
+                    //Get the type of  cupcake at cupcakeMenu @ index 2, and then run the type method on the said Cupcake Object
+                    cupcakeMenu.get(2).type();
+                    //Print the price of this specific cupcake,by using the 'getPrice()' method
+                    System.out.println(cupcakeMenu.get(2).getPrice());
+                    //Set the 'subtotal' equal to 'subtotal' plus the 'cupcakeMenu' 'getPrice()' at 2
+                    subtotal = subtotal + cupcakeMenu.get(2).getPrice();
+                }
+                // Check if order at i is equal to drinkMenu at 0
+                else if (order.get(i).equals(drinkMenu.get(0)))
+                {
+                    // Get the type of drink at drinkMenu index 0
+                    drinkMenu.get(0).type();
+                    // Print the price of drink at drinkMenu index 0
+                    System.out.println(drinkMenu.get(0).getPrice());
+                    //Set 'subtotal' equal to 'subtotal' plus 'drinkMenu getPrice' at 0
+                    subtotal = subtotal + drinkMenu.get(0).getPrice();
+                }
+                // Check if order at i is equal to drinkMenu at 1
+                else if (order.get(i).equals(drinkMenu.get(1))){
+                    //Get the type of drink at drinkMenu index 1
+                    drinkMenu.get(1).type();
+                    //Print the price of the drinkMenu index 1
+                    System.out.println(drinkMenu.get(1).getPrice());
+                    //Set 'subtotal' equal to 'subtotal' plus 'drinkMenu getPrice' at 1
+                    subtotal = subtotal + drinkMenu.get(1).getPrice();
+                }
+                // Check if order at i is equal to drinkMenu at 2
+                else if (order.get(i).equals(drinkMenu.get(2))){
+                    //Get the type of drink at drinkMenu index 2
+                    drinkMenu.get(2).type();
+                    //Print the price of the drinkMenu index 2
+                    System.out.println(drinkMenu.get(2).getPrice());
+                    //Set 'subtotal' equal to 'subtotal' plus 'drinkMenu getPrice' at 2
+                    subtotal = subtotal + drinkMenu.get(2).getPrice();
+                }
+                //Print out the 'subtotal' amount
+                System.out.println(" $" + subtotal);
             }
 
 
