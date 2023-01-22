@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -36,6 +40,7 @@ public class Order {
 
             //'for Loop' created to iterate through the 'drinkMenu' ArrayList using the '.size()' List method
             for(int i = 0; i < drinkMenu.size(); i++){
+                itemNumber++;
                 System.out.println(itemNumber);
                 //Get the type of drink by calling out the 'drinkMenu' ArrayList and using the '.get(i)' and '.type() Method on the said ArrayList
                 drinkMenu.get(i).type();
@@ -47,7 +52,7 @@ public class Order {
             boolean ordering = true;
 
             //A while loop that continues as long as the value of ordering is true
-            while(ordering == true){
+            while(ordering){
                 System.out.println(" What would you like to order? Please use the number associated with each item to order. ");
                 //Create an int variable called 'orderChoice' and save the user's input (aka 'userInput.nextInt()' variable) to this variable
                 int orderChoice = userInput.nextInt();
@@ -163,11 +168,15 @@ public class Order {
                     subtotal = subtotal + drinkMenu.get(2).getPrice();
                 }
                 //Print out the 'subtotal' amount
-                System.out.println(" $" + subtotal);
+                System.out.println("-----------------------------------");
+                System.out.println(" Your Total is: $" + subtotal);
+
+                //PP4-Step5- Function call: of 'CreateFile' & 'WriteToFile' (from PP4-Step4) :
+                //Create a new 'CreateFile()'
+                new CreateFile();
+                //Create a new WriteToFile() with the parameter 'order'
+                new WriteToFile(order);
             }
-
-
-
 
         }
         else{
@@ -177,7 +186,55 @@ public class Order {
     };
 }
 
+//PP4-Step2- Create File:
+class CreateFile{
+    //Create a public constructor 'Create File()'
+    public CreateFile(){
 
+        // Make a 'try - catch' block, w/ a catch parameter of 'IOException e'
+        try {
+            //Create a 'File' object names 'salesData' and set it equal to a new File w/ parameter 'salesData'
+            File salesData = new File("salesData.txt");
+
+            if(salesData.createNewFile()){
+                System.out.println("File created: " + salesData.getName());
+            }
+            else {
+                System.out.println("File already exists");
+            }
+
+        }
+        catch (IOException e){
+            System.out.println(" An error occurred. ");
+        }
+    }
+}
+////PP4-Step3- Write to File:
+class WriteToFile{
+
+    WriteToFile(ArrayList<Object> order){
+        try{
+
+            //Create a new 'FileWriter' object named 'fw' and set it equal to new 'FileWriter' object w/ 'salesData.txt' as a parameter
+            FileWriter fw = new FileWriter("salesData.txt", true);
+            //Create new 'PrintWriter' object called 'salesWriter' and set it equal to new 'PrintWriter' object w/ 'fw' as a parameter
+            PrintWriter salesWriter = new PrintWriter(fw);
+
+            //Print each value in order
+            for ( int i = 0; i < order.size(); i++){
+                salesWriter.println(order.get(i));
+            }
+            //Stop 'salesWriter' object from running continuously by using '.close()' method
+            salesWriter.close();
+
+            System.out.println(" Successfully wrote to the file. ");
+        }
+        catch (IOException e){
+            System.out.println(" An error occurred ");
+
+        }
+    }
+}
 
 
 

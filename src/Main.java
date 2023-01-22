@@ -16,6 +16,8 @@ public class Main {
         cupcake.type();
         System.out.println("How much would you like to be charged for the (standard) cupcake?" + "\n(Input a numerical number taken to 2 decimal places");
         String priceText = input.nextLine();
+
+        //This is the double price variable for the cupcakes on the menu
         double price = Double.parseDouble(priceText);
         cupcake.setPrice(price);
         //pricing for 'RedVelvet' cupcake
@@ -39,32 +41,39 @@ public class Main {
 
         //PP2-Step4 -Object Declaration:
         ArrayList<Drink> drinkMenu = new ArrayList<Drink>();
+
+
+
         Drink water = new Drink();
         Soda soda = new Soda();
         Milk milk = new Milk();
-        //PP2-Step5 -Pricing:
+
+        //PP2-Step5 -Pricing: for Drinks
         System.out.println("We are in the middle of creating the drinks menu. We currently have three different drinks on our menu but we need to decide on pricing.");
         //pricing for standard drink 'Water'
         System.out.println("We are deciding on the price for our standard drink,(which is bottled water). Here is the description: ");
         water.type();
         System.out.println("How much would you like to be charged for the bottled water?" + "\n(Input a numerical number taken to 2 decimal places");
-        priceText = input.nextLine();
-        price = Double.parseDouble(priceText);
-        water.setPrice(price);
+
+        String priceTextDrink = input.nextLine();
+
+        double priceDrink = Double.parseDouble(priceTextDrink);
+
+        water.setPrice(priceDrink);
         //pricing for 'Soda'
         System.out.println("We are deciding on the price for our soda. Here is the description: ");
         soda.type();
         System.out.println("How much would you like to be charged for the canned soda?" + "\n(Input a numerical number taken to 2 decimal places");
-        priceText = input.nextLine();
-        price = Double.parseDouble(priceText);
-        soda.setPrice(price);
+        priceTextDrink = input.nextLine();
+        priceDrink = Double.parseDouble(priceTextDrink);
+        soda.setPrice(priceDrink);
         //pricing for 'Milk'
         System.out.println("We are deciding on the price for our glass of milk. Here is the description: ");
         milk.type();
         System.out.println("How much would you like to be charged for the glass of milk" + "\n(Input a numerical number taken to 2 decimal places");
-        priceText = input.nextLine();
-        price = Double.parseDouble(priceText);
-        milk.setPrice(price);
+        priceTextDrink = input.nextLine();
+        priceDrink = Double.parseDouble(priceTextDrink);
+        milk.setPrice(priceDrink);
         //Add the Drink choices to the 'drinkMenu':
         drinkMenu.add(water);
         drinkMenu.add(soda);
